@@ -4,280 +4,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>sample project</title>
-    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" media="all" href="/r project1/style.css" type="text/css" />
-  
+    <title>number verification</title>
+    <style>
+        .container {
+            width: 302px;
+            height: 175px;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+        }
+        #number, #verificationcode {
+            width: calc(100% - 24px);
+            padding: 10px;
+            font-size: 20px;
+            margin-bottom: 5px;
+            outline: none;
+        }
+        #recaptcha-container {
+            margin-bottom: 5px;
+        }
+        #send ,#verify {
+            width: 100%;
+            height: 40px;
+            outline: none;
+        }
+        .p-conf ,n-conf{
+            width: calc(100% -22px);
+            border: 2px solid green;
+            border-radius: 4px;
+            padding: 8px 10px;
+            margin: 4px 8px;
+            background-color: rgba(0,249,12,0.5);
+            display: none;
+        }
+        .n-conf{
+            border-color: red;
+            background-color: rgba(255,0,4,0.5);
+            display: none;
+        }
+    </style>
 </head>
-<body style="background-color: #faf0e6 ; width: 100% ; height: 100%; margin: 0%; padding: 0%; overflow-x: hidden;" >
-  <header class="text-gray-600 body-font" style="font-size:large ; font-weight:bold; background-color: cadetblue;">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-        <a class="mr-5 hover:text-black" target ="blank"><a href="/r project1/main.html">Home</a></a>
-        <a class="mr-5 hover:text-black"><a href="/r project1/main.html">Best Sellers</a></a>
-        <a class="mr-5 hover:text-black"><a href="/r project1/main.html">Gadgets</a></a>
-        <a class="mr-5 hover:text-black"><a href="/r project1/main.html">Gaming Consoles</a></a>
-      </nav>
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <div>
-              <button class="btn btn-outline-success" type="submit" style="margin-right: 15px;">🔍</button>
-            </div>
-      <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-        <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" style="background-color: khaki ;"><a href="/r project1/index.html">Login</a>
-          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
+<body style="background-color:#6495ed ;">
+    <div class="container">
+        <div id="sender">
+            <input type="text" id="number" placeholder="enter your mobile number with your country code">
+            <div id="recaptcha-container"></div>
+            <input type="button" id="send" value="Send" onclick="phoneAuth()">
+        </div>
+        <div id="verifier" style="display:none">
+            <input type="text" id="verificationcode" placeholder="OTP Code">
+            <input type="button" id="verify" value="Verify" onclick="codeverify()">
+            <div class="p-conf">The order has been succesfully placed.</div>
+            <div class="n-conf">OOPS!! give it a try again.</div>
+        </div>
     </div>
-  </header>
-  <div id="slider" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
-    <figure>
-      <img src="/r project1/img10.jpeg" />
-      <img src="/r project1/img11.jpeg" />
-      <img src="/r project1/img12.jpeg" />
-    </figure>
-  </a>
-  </div>
-  <section class="text-gray-600 body-font mx-0 my-0" style="margin: 0% ; padding:0%; width: 100%; height: 100%;">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-wrap -mx-0 my-0">
-        <div class="p-4 md:w-1/3" style="margin: 0px ; padding:0px">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img1.jpeg" alt="blog">
-            <div class="p-6">
-              <p class="leading-relaxed mb-3">These are specifically hand-picked products according to your needs.</p>
-              <div class="flex items-center flex-wrap ">
-                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>1.2K
-                </span>
-                <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                  </svg>6
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3" style="margin:0 px ; padding:0px">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img2.jpeg" alt="blog">
-            <div class="p-6">
-                <p class="leading-relaxed mb-3">To keep you healthy.We personally recommend some Vitamin and Mineral Supplements.Grab yours ASAP</p>
-              <div class="flex items-center flex-wrap">
-                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>1.2K
-                </span>
-                <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                  </svg>6
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3" style="margin:0px; padding: 0px;">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img3.jpeg" alt="blog">
-            <div class="p-6">
-              <p class="leading-relaxed mb-3">Top-Class Furniture to make your home more beautiful.What's with the delay.Hurry UP!!!!. Check'em out.</p>
-              <div class="flex items-center flex-wrap ">
-                <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-                  <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>1.2K
-                </span>
-                <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                  <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                  </svg>6
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="text-gray-600 body-font" style="margin: 0px ; padding:0px ; width: 100%;height: 100%;">
-    <div class="container px-5 py-24 mx-0">
-      <div class="flex flex-wrap -mx-0 my-0">
-        <div class="p-4 md:w-1/2" style="margin:0% ; padding:0%">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img4.jpeg">
-            <div class="p-6">
-              <p class="leading-relaxed mb-3">To keep u more entertained.We have bought on to the table some really good tv shows</p>
-            </div>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/2" style="margin:0px ; padding:0px">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img5.jpeg">
-            <div class="p-6">
-              <p class="leading-relaxed mb-3">Fond of games!!!!!!! We have the top Selling games and Gadgets.We hope u give it a look.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="text-gray-600 body-font" style="height: 100%; width:100% ; background-color: #bc8f8f; margin:0%; padding:0%">
-    <div class="container px-5 py-24 mx-0 my-0">
-      <div class="flex flex-wrap -m-4">
-        <div class="p-4 md:w-1/3" style="margin:0px ; padding:0%">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img7.jpeg" alt="blog">
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3" style="margin:0px ; padding:0px">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img8.jpeg" alt="blog">
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3" style="margin: 0px; padding:0%">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="/r project1/img9.jpeg" alt="blog">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="text-gray-600 body-font" style="background-color: grey;">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-wrap md:text-left text-center -mb-10 -mx-4">
-        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Get to Know Us</h2>
-          <nav class="list-none mb-10">
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Careers</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">About</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Newsletter</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Device</a>
-            </li>
-          </nav>
-        </div>
-        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Make Money With Us</h2>
-          <nav class="list-none mb-10">
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Sell Products</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Sell Apps</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Become an Affiliate</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Become a Delivery Partner</a>
-            </li>
-          </nav>
-        </div>
-        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Payment Systems</h2>
-          <nav class="list-none mb-10">
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Rewards</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Store Card</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Business Cards</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Secured Cards</a>
-            </li>
-          </nav>
-        </div>
-        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Let Us Help You</h2>
-          <nav class="list-none mb-10">
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Covid-19 Norms</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Your Account</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Your Orders</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Help</a>
-            </li>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <div class="border-t border-black">
-      <div class="container px-5 py-8 flex flex-wrap mx-auto items-center">
-        <span class="inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto">
-          <a class="text-black">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-            </svg>
-          </a>
-          <a class="ml-3 text-black">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-            </svg>
-          </a>
-          <a class="ml-3 text-black">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-            </svg>
-          </a>
-          <a class="ml-3 text-black">
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-              <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-              <circle cx="4" cy="4" r="2" stroke="none"></circle>
-            </svg>
-          </a>
-        </span>
-      </div>
-    </div>
-    <div class="bg-gray-100">
-      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-        <p class="text-gray-500 text-sm text-center sm:text-left">You are currently in Gen-Z mode
-        </p>
-        <span class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm"><a href="/r project2/main.html">Click here for Gen-Y Mode</a></span>
-      </div>
-    </div>
-  </footer>
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+<script>
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDDyg3ggHnfNWPSotDPlT4lvQMJlkuKeRo",
+  authDomain: "r-project-af619.firebaseapp.com",
+  projectId: "r-project-af619",
+  storageBucket: "r-project-af619.appspot.com",
+  messagingSenderId: "844412725180",
+  appId: "1:844412725180:web:f565fda024559948f9adb9",
+  measurementId: "G-JHTTL5MWNV"
+};
+    firebase.initializeApp( firebaseConfig);
+render();
+function render(){
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    recaptchaVerifier.render();
+
+}
+function phoneAuth(){
+    var number= document.getElementById('number').value;
+    firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function(confirmationResult){
+        window.confirmationResult = confirmationResult;
+        coderesult = confirmationResult;
+        document.getElementById('sender').style.display = 'none';
+        document.getElementById('verifier').style.display = 'block';
+    }).catch(function(error){
+        alert(error.message);
+
+    });
+}
+function codeverify(){
+    var code= document.getElementById('verificationcode').value;
+    coderesult.confirm(code).then(function(){
+        document.getElementsByClassName('p-conf')[0].style.display = 'block';
+        document.getElementsByClassName('n-conf')[0].style.display = 'none';
+    }).catch(function(){
+        document.getElementsByClassName('p-conf')[0].style.display = 'none';
+        document.getElementsByClassName('n-conf')[0].style.display = 'block';
+    })
+}
+</script>
 </body>
 </html>
